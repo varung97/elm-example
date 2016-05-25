@@ -1,1 +1,4 @@
-Deprecating Observer Patterns.pptx
+*.html
+*.js
+*.pptx
+elm-stuff/
