@@ -1,0 +1,43 @@
+Elm.Main = Elm.Main || {};
+Elm.Main.make = function (_elm) {
+       "use strict";
+       _elm.Main = _elm.Main || {};
+       if (_elm.Main.values)    return _elm.Main.values;
+       var _U = Elm.Native.Utils.make(_elm),
+       $Basics = Elm.Basics.make(_elm),
+       $Debug = Elm.Debug.make(_elm),
+       $Graphics$Element = Elm.Graphics.Element.make(_elm),
+       $List = Elm.List.make(_elm),
+       $Maybe = Elm.Maybe.make(_elm),
+       $Result = Elm.Result.make(_elm),
+       $Signal = Elm.Signal.make(_elm),
+       $Text = Elm.Text.make(_elm),
+       $Time = Elm.Time.make(_elm);
+       var _op = {};
+       var view = function (counter) {
+          return A4($Graphics$Element.container
+                   ,1400
+                   ,500
+                   ,$Graphics$Element.middle
+                   ,$Graphics$Element.centered(A2($Text.height
+                                                 ,40
+                                                 ,$Text.fromString($Basics.toString(counter)))));
+       };
+       var updateCounter = F2(function (action,counter) {
+                              var _p0 = action;
+                              return counter + 1;
+                           });
+       var time = $Time.every($Time.second);
+       var Tick = {ctor: "Tick"};
+       var actions = A2($Signal.map,$Basics.always(Tick),time);
+       var state = A3($Signal.foldp,updateCounter,0,actions);
+       var main = A2($Signal.map,view,state);
+       return _elm.Main.values = {_op: _op
+                                 ,Tick: Tick
+                                 ,time: time
+                                 ,actions: actions
+                                 ,state: state
+                                 ,updateCounter: updateCounter
+                                 ,main: main
+                                 ,view: view};
+    };

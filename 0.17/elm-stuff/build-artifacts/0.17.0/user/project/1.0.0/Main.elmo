@@ -1,0 +1,37 @@
+var _user$project$Main$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		return {ctor: '_Tuple2', _0: model + 1, _1: _elm_lang$core$Platform_Cmd$none};
+	});
+var _user$project$Main$init = {ctor: '_Tuple2', _0: 0, _1: _elm_lang$core$Platform_Cmd$none};
+var _user$project$Main$styles = _elm_lang$core$Native_List.fromArray(
+	[
+		{ctor: '_Tuple2', _0: 'text-align', _1: 'center'},
+		{ctor: '_Tuple2', _0: 'height', _1: '500px'},
+		{ctor: '_Tuple2', _0: 'width', _1: '1400px'},
+		{ctor: '_Tuple2', _0: 'font-size', _1: 'xx-large'},
+		{ctor: '_Tuple2', _0: 'margin-top', _1: '300px'}
+	]);
+var _user$project$Main$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$p,
+		_elm_lang$core$Native_List.fromArray(
+			[
+				_elm_lang$html$Html_Attributes$style(_user$project$Main$styles)
+			]),
+		_elm_lang$core$Native_List.fromArray(
+			[
+				_elm_lang$html$Html$text(
+				_elm_lang$core$Basics$toString(model))
+			]));
+};
+var _user$project$Main$Tick = function (a) {
+	return {ctor: 'Tick', _0: a};
+};
+var _user$project$Main$subscriptions = function (model) {
+	return A2(_elm_lang$core$Time$every, _elm_lang$core$Time$second, _user$project$Main$Tick);
+};
+var _user$project$Main$main = {
+	main: _elm_lang$html$Html_App$program(
+		{init: _user$project$Main$init, subscriptions: _user$project$Main$subscriptions, update: _user$project$Main$update, view: _user$project$Main$view})
+};
