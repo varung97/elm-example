@@ -2,3 +2,4 @@
 *.js
 *.pptx
 elm-stuff/
+node_modules/
